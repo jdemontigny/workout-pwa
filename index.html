@@ -1,21 +1,28 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Workout Tracker</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: sans-serif; padding: 20px; text-align: center; }
+    .loading { font-size: 18px; margin-top: 50px; color: #333; }
+  </style>
 </head>
 <body>
-  <div class="app-header">
-    <h1>Workout Tracker</h1>
-    <div class="controls">
-      <button id="darkToggle">🌙</button>
-      <button id="syncBtn">🔄 Sync</button>
-      <button id="resetAllBtn">🧹 Reset All</button>
-    </div>
+  <h1>Workout Tracker</h1>
+  <div id="buttons">
+    <button>🌙</button>
+    <button>🔄 Sync</button>
+    <button>🧹 Reset All</button>
   </div>
-  <div id="workoutContainer">Loading...</div>
-  <script src="app.js"></script>
+  <div id="content">
+    <p class="loading">Loading your workouts...</p>
+  </div>
+  <script>
+    // Mockup script
+    document.getElementById("content").innerHTML += "<p>✅ Fallback script loaded.</p>";
+  </script>
 </body>
 </html>
