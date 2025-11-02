@@ -1,1 +1,29 @@
-<!DOCTYPE html><html><head><title>Workout</title></head><body>Hello Workout</body></html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Workout Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Workout Tracker</h1>
+    <div class="top-controls">
+      <button onclick="toggleDarkMode()">🌙</button>
+      <button onclick="fetchData()">🔄 Sync</button>
+      <button onclick="resetAll()">🧹 Reset All</button>
+    </div>
+  </header>
+  <main>
+    <div id="days-list"></div>
+    <div id="workout-container" class="hidden">
+      <button onclick="goBack()">← Back</button>
+      <h2 id="day-title"></h2>
+      <div id="workouts-list"></div>
+    </div>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>
