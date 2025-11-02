@@ -3,88 +3,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Workout Tracker</title>
-  <style>
-    body { font-family: sans-serif; padding: 20px; text-align: center; background: #f2f2f2; color: #333; }
-    .header { font-size: 24px; font-weight: bold; }
-    .buttons { margin: 15px 0; }
-    .buttons button { margin: 5px; padding: 10px 20px; font-size: 16px; }
-    .workout-card { background: white; padding: 15px; margin: 10px auto; width: 90%; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .workout-card input, .workout-card textarea { width: 90%; margin: 5px 0; padding: 6px; font-size: 14px; }
-    .workout-card button { margin-top: 5px; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="header">Workout Tracker</div>
-  <div class="buttons">
-    <button onclick="toggleDarkMode()">🌙</button>
-    <button onclick="fetchWorkouts()">🔄 Sync</button>
-    <button onclick="resetAll()">🧹 Reset All</button>
-    <button onclick="addWorkout()">➕ Add Workout</button>
+  <div id="app">
+    <header>
+      <h1>Workout Tracker</h1>
+      <div class="controls">
+        <button id="darkToggle">🌙</button>
+        <button id="syncBtn">🔄 Sync</button>
+        <button id="resetAll">🧹 Reset All</button>
+      </div>
+    </header>
+    <main>
+      <p>Loading...</p>
+    </main>
+    <script src="app.js"></script>
   </div>
-
-  <div id="workoutList">Loading...</div>
-
-  <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzt0WU6KPVlF6LIXCKO57dUse5-Er_m-yBch-C5nChqwb2hlERhSzULjG3_O0--RUSF/exec';
-    let workouts = [];
-
-    async function fetchWorkouts() {
-      document.getElementById("workoutList").innerHTML = "Loading...";
-      try {
-        const res = await fetch(scriptURL);
-        workouts = await res.json();
-        renderWorkouts();
-      } catch (e) {
-        document.getElementById("workoutList").innerHTML = "Error loading workouts.";
-      }
-    }
-
-    function renderWorkouts() {
-      const container = document.getElementById("workoutList");
-      container.innerHTML = "";
-      workouts.forEach((w, i) => {
-        container.innerHTML += `
-          <div class="workout-card">
-            <input value="${w.Day}" placeholder="Day" onchange="updateWorkout(${i}, 'Day', this.value)" /><br/>
-            <input value="${w.Workout}" placeholder="Workout" onchange="updateWorkout(${i}, 'Workout', this.value)" /><br/>
-            <input value="${w.Category}" placeholder="Category" onchange="updateWorkout(${i}, 'Category', this.value)" /><br/>
-            <input value="${w['Link to Video']}" placeholder="Link to Video" onchange="updateWorkout(${i}, 'Link to Video', this.value)" /><br/>
-            <textarea placeholder="Notes" onchange="updateWorkout(${i}, 'Notes', this.value)">${w.Notes}</textarea><br/>
-            <button onclick="removeWorkout(${i})">🗑️ Delete</button>
-          </div>
-        `;
-      });
-    }
-
-    function updateWorkout(index, field, value) {
-      workouts[index][field] = value;
-    }
-
-    function addWorkout() {
-      workouts.push({ Day: "", Workout: "", Category: "", "Link to Video": "", Notes: "" });
-      renderWorkouts();
-    }
-
-    function removeWorkout(index) {
-      workouts.splice(index, 1);
-      renderWorkouts();
-    }
-
-    function resetAll() {
-      if (confirm("Reset all workouts?")) {
-        workouts = [];
-        renderWorkouts();
-      }
-    }
-
-    function toggleDarkMode() {
-      document.body.style.background = "#111";
-      document.body.style.color = "#fff";
-    }
-
-    window.onload = fetchWorkouts;
-  </script>
 </body>
 </html>
+    
