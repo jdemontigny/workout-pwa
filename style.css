@@ -1,1 +1,81 @@
-body { font-family: sans-serif; }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #111;
+  transition: background 0.3s, color 0.3s;
+}
+body.dark-mode {
+  background: #121212;
+  color: #eee;
+}
+header {
+  padding: 1rem;
+  text-align: center;
+  background: #6200ea;
+  color: #fff;
+}
+.top-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+button {
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  opacity: 0.8;
+}
+#days-list {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+}
+.day-button {
+  padding: 1rem;
+  background: #eee;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.day-button:hover {
+  background: #ddd;
+}
+body.dark-mode .day-button {
+  background: #333;
+}
+#workout-container {
+  padding: 1rem;
+}
+.workout-card {
+  background: #f0f0f0;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+}
+body.dark-mode .workout-card {
+  background: #222;
+}
+.hidden {
+  display: none;
+}
+iframe {
+  width: 100%;
+  max-width: 360px;
+  height: 200px;
+  margin-top: 10px;
+}
+input, textarea {
+  width: 100%;
+  padding: 0.5em;
+  margin-top: 0.3em;
+  margin-bottom: 0.8em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
